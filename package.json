@@ -1,0 +1,29 @@
+{
+  "name": "cookbook",
+  "version": "1.0.0",
+  "description": "Cookbook is going to be a recipe sharing application at first the basic funcationality is going to built with VanillaJS, and then later on we will come back and rebuilt the site, with all of its internal features like posting new recipes and such, using Vue",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WG75/Cookbook.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WG75/Cookbook/issues"
+  },
+  "homepage": "https://github.com/WG75/Cookbook#readme",
+  "dependencies": {
+    "ejs": "^2.5.6",
+    "express": "^4.15.2"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-sass": "^3.1.0"
+  }
+}

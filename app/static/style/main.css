@@ -47,6 +47,9 @@ table {
 
 /***Colors pallete***/
 /*****Fonts*****/
+* {
+  box-sizing: border-box; }
+
 a, img {
   display: inline-block; }
 
@@ -61,4 +64,69 @@ button {
   border: none; }
 
 body {
-  font-size: 16px; }
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif; }
+
+.btn {
+  min-width: 60px;
+  height: 36px;
+  padding: 0px 10px;
+  line-height: 36px;
+  border-radius: 3px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700; }
+
+.main-header {
+  height: 500px;
+  background: url("../images/header.jpeg") no-repeat center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column; }
+  .main-header nav {
+    display: flex;
+    align-items: center;
+    min-height: 64px;
+    padding: 10px 15px;
+    background: #71524e; }
+    .main-header nav .logo {
+      margin-right: auto;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 2.5em;
+      color: #E7BA9C;
+      font-weight: 700; }
+    .main-header nav .btn {
+      color: #ECB951; }
+    .main-header nav .signup {
+      background: #649950;
+      margin-right: 10px; }
+    .main-header nav .login {
+      background: #B4345A; }
+  .main-header form {
+    margin: auto;
+    height: 37px; }
+    .main-header form label {
+      top: 7px;
+      left: 30px;
+      font-weight: 300;
+      font-size: 0.9em;
+      height: 100%; }
+    .main-header form input[type="search"] {
+      padding: 5px;
+      height: 100%;
+      width: 300px;
+      border: 0;
+      background: #3e2b2c;
+      border: 1px solid #E7BA9C; }
+      .main-header form input[type="search"]::placeholder {
+        color: #785c57; }
+      .main-header form input[type="search"]::-webkit-search-cancel-button {
+        display: none; }
+    .main-header form .btn {
+      align-self: center;
+      border-radius: 0;
+      margin-left: -5px;
+      height: 100%;
+      vertical-align: top;
+      background-color: #E7BA9C;
+      color: #71524e; }

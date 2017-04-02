@@ -1,7 +1,8 @@
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
     browserSync = require('browser-sync'),
-    nodemon = require('gulp-nodemon');
+    nodemon = require('gulp-nodemon'),
+    plumber = require('gulp-plumber');
 
 
 gulp.task('start', () => {
@@ -13,7 +14,10 @@ gulp.task('start', () => {
 
 gulp.task('sass', () => {
    gulp.src('app/static/style/*.sass')
-   .pipe(sass())
+   .pipe(plumber())
+   .pipe(sass({
+     errLogToConsole: true
+   }))
    .pipe(gulp.dest('app/static/style'))
    .pipe(browserSync.stream())
 })

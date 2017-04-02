@@ -1,8 +1,39 @@
+
 .categories
-  margin-top: 45px
+  margin: 55px 0
   h1
     text-align: center
     @include heading-text
+    font-weight: 700
+    font-size: 1.5em
+    color: $text-color
+    text-decoration: underline
+    margin-bottom: 55px
+  .all-recipes
+    margin: 25px auto 15px
+    display: block
+    width: 200px
+    text-align: center
+    background: $link-color
+    color: $secondary-color
+    height: 45px
+    line-height: 45px
 .categories_container
   display: flex
-  flex-direction: column
+  flex-wrap: wrap
+  justify-content: center
+  .item
+    margin: 10px
+    color: $nav-background
+
+    figure
+      display: flex
+      flex-direction: column
+      align-items: center
+    img
+      width: 110px
+      height: 110px
+      background: $heading-color
+      padding: 30px
+      border-radius: 50%
+      margin-bottom: 10px

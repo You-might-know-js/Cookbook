@@ -14,12 +14,15 @@ app.set('views', path.join(__dirname, '../dist/views'))
 app.use(
       morgan((tokens, req, res) => {
         return [tokens.method(req, res),
-                tokens.url(req, res)].join('')
+                tokens.url(req, res),
+                tokens.status(req,res)].join('')
 }))
 
 app.use(compression());
 
 app.use(express.static(path.join(__dirname, '../dist/static/')))
+app.use(express.static(path.join(__dirname, '../app/static/')))
+
 
 app.use(routes, (req, res) => {
     res.render('index')

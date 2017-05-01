@@ -54,7 +54,8 @@ a, img {
   display: inline-block; }
 
 img {
-  max-width: 100%none; }
+  max-width: 100%;
+  height: auto; }
 
 a {
   text-decoration: none; }
@@ -133,7 +134,8 @@ body {
       color: #71524e; }
 
 .categories {
-  margin: 55px 0; }
+  padding: 75px 0;
+  box-shadow: inset 1px 0px 3px 0px #736f7e; }
   .categories h1 {
     text-align: center;
     font-family: 'Open Sans', sans-serif;
@@ -164,70 +166,91 @@ body {
       flex-direction: column;
       align-items: center; }
     .categories_container .item img {
-      width: 110px;
-      height: 110px;
+      width: 50px;
+      height: 50px;
       background: #F39D90;
       padding: 30px;
       border-radius: 50%;
       margin-bottom: 10px; }
 
 .secondary-content {
-  display: flex;
-  background: #736F7E; }
+  display: flex; }
+  @media screen and (max-width: 920px) {
+    .secondary-content {
+      flex-direction: column; } }
+  .secondary-content .latest-recipes {
+    background: url("/images/latest-recipes.jpg") no-repeat center;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    flex: 3 0 550px; }
+    .secondary-content .latest-recipes .overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: rgba(231, 186, 156, 0.6); }
 
 aside {
-  background: #fff;
-  max-width: 350px;
-  margin-left: auto; }
-  aside .trending {
-    margin-bottom: 20px; }
-    aside .trending h3 {
+  background: #eed3bd;
+  margin-left: auto;
+  flex: 1;
+  min-width: 350px; }
+  aside .trending-authors {
+    margin-bottom: 30px; }
+    aside .trending-authors h3 {
       font-family: 'Open Sans', sans-serif;
       font-weight: 700;
       font-size: 1.2em;
+      text-transform: uppercase;
       margin: 10px 0;
       padding: 10px;
       text-align: center;
       color: #B4345A; }
-    aside .trending .author {
+    aside .trending-authors .author {
       display: flex;
-      justify-content: center;
-      padding: 15px 5px; }
-      aside .trending .author img {
+      padding: 15px 15px;
+      color: #736F7E;
+      border-bottom: 1px solid; }
+      aside .trending-authors .author:hover {
+        background: #f18979; }
+      aside .trending-authors .author img {
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        margin-right: 10px; }
-      aside .trending .author figcaption {
+        margin-right: 20px; }
+      aside .trending-authors .author figcaption {
         align-self: center; }
-        aside .trending .author figcaption a {
-          margin-bottom: 5px; }
-  aside .featured-content {
+        aside .trending-authors .author figcaption a {
+          margin-bottom: 5px;
+          color: #4e4b55; }
+        aside .trending-authors .author figcaption p {
+          font-weight: lighter; }
+  aside .trending-recipes {
     color: #736F7E; }
-    aside .featured-content h3 {
+    aside .trending-recipes h3 {
       font-weight: 700;
       font-size: 1.2em;
       color: #B4345A;
       text-align: center;
-      margin-bottom: 15px; }
-    aside .featured-content .featured-recipe {
+      margin: 25px;
+      text-transform: uppercase; }
+    aside .trending-recipes .recipe-wrapper {
       display: flex;
-      padding: 10px 5px; }
-      aside .featured-content .featured-recipe img {
-        width: 100px;
-        height: 100px;
-        border-radius: 3px;
+      height: 150px;
+      background: #fff; }
+      aside .trending-recipes .recipe-wrapper > a {
         margin-right: 10px; }
-      aside .featured-content .featured-recipe p {
-        font-weight: 300;
-        margin-bottom: 5px; }
-        aside .featured-content .featured-recipe p .recipe-title {
-          font-weight: 400;
-          color: #000; }
-        aside .featured-content .featured-recipe p .author {
-          color: #71524e;
-          font-weight: 400; }
-      aside .featured-content .featured-recipe .btn {
-        font-size: 0.8em;
-        background: #736F7E;
-        color: #ECB951; }
+        aside .trending-recipes .recipe-wrapper > a img {
+          width: 100%;
+          height: 100%; }
+      aside .trending-recipes .recipe-wrapper .recipe-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; }
+        aside .trending-recipes .recipe-wrapper .recipe-info p {
+          margin-bottom: 15px; }
+        aside .trending-recipes .recipe-wrapper .recipe-info .button-wrapper {
+          display: flex;
+          justify-content: space-between; }

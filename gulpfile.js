@@ -43,10 +43,12 @@ gulp.task('serve', ['sass', 'views', 'imagemin', 'start'], () => {
     setTimeout(() => {
       browserSync.init({
         proxy: 'localhost:8080',
-        files: ['app/**/*.*', '!app/**/*.sass']
+        files: ['app/**/*.*', '!app/**/*.sass'],
+        reloadDelay: 200
         })
     }, 1000)
 })
 
 
 gulp.watch('app/**/*.sass', ['sass']);
+gulp.watch('app/**/*.ejs', ['views']);

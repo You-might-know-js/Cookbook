@@ -238,19 +238,41 @@ aside {
       text-transform: uppercase; }
     aside .trending-recipes .recipe-wrapper {
       display: flex;
-      height: 150px;
-      background: #fff; }
-      aside .trending-recipes .recipe-wrapper > a {
-        margin-right: 10px; }
-        aside .trending-recipes .recipe-wrapper > a img {
-          width: 100%;
-          height: 100%; }
+      height: 140px;
+      background: #71524e;
+      margin: 10px 0; }
+      aside .trending-recipes .recipe-wrapper .more {
+        display: flex;
+        flex-direction: column;
+        margin-right: 10px;
+        flex: 0 0 120px; }
+        aside .trending-recipes .recipe-wrapper .more img {
+          flex: 0 0 100px;
+          margin-bottom: auto; }
+        aside .trending-recipes .recipe-wrapper .more a {
+          text-align: center;
+          padding: 10px;
+          background: #649950;
+          color: #ECB951; }
       aside .trending-recipes .recipe-wrapper .recipe-info {
         display: flex;
         flex-direction: column;
         justify-content: space-between; }
         aside .trending-recipes .recipe-wrapper .recipe-info p {
-          margin-bottom: 15px; }
-        aside .trending-recipes .recipe-wrapper .recipe-info .button-wrapper {
           display: flex;
-          justify-content: space-between; }
+          flex-direction: column;
+          color: #eed3bd; }
+          aside .trending-recipes .recipe-wrapper .recipe-info p .recipe-title {
+            margin: 10px 0;
+            color: #eed3bd; }
+          aside .trending-recipes .recipe-wrapper .recipe-info p .author-name {
+            color: #ECB951;
+            text-transform: uppercase;
+            font-size: 0.8em;
+            text-decoration: underline; }
+        aside .trending-recipes .recipe-wrapper .recipe-info .views {
+          display: flex;
+          justify-content: flex-end;
+          color: #eed3bd; }
+          aside .trending-recipes .recipe-wrapper .recipe-info .views span {
+            background: #533c39; }

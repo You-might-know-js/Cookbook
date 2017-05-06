@@ -22,6 +22,8 @@ app.use(compression());
 
 app.use(express.static(path.join(__dirname, '../dist/static/')))
 app.use(express.static(path.join(__dirname, '../app/static/')))
+app.use(express.static(path.join(__dirname, '../node_modules/flickity/')))
+
 
 
 app.use(routes, (req, res) => {

@@ -1,38 +1,75 @@
+nav
+  display: flex
+  align-items: center
+  min-height: 64px
+  padding: 10px 15px
+  background: $nav-background
+  .logo
+    margin-right: auto
+    @include heading-text
+    font-size: 2.5em
+    color: $terary-color
+    font-weight: 700
+  .btn
+    color: $secondary-color
+
+  .signup
+    background: $link-color
+    margin-right: 10px
+
+  .login
+    background: $primary-color
+
+
+
+
+  .nav-icon
+    cursor: pointer
+    display: flex
+    flex-direction: column
+    width: 40px
+    height: 35px
+    justify-content: space-around
+    position: relative
+    span
+      position: absolute
+      width: 100%
+      height: 5px
+      background: #fff
+      left: 0
+      transform: rotate(0deg)
+      transform-origin: left
+      transition: 0.3s ease-out
+      &:nth-child(1)
+        top: 0
+      &:nth-child(3)
+        bottom: 0
+
+  .open
+    span:nth-child(1)
+      transform: rotateZ(45deg)
+      left: 8px
+      top: 2px
+
+    span:nth-child(2)
+      transform: rotateY(90deg)
+      opacity: 0
+      left: 8px
+
+    span:nth-child(3)
+      transform: rotateZ(-45deg)
+      left: 8px
+
+
 .main-header
-  height: 100vh
+  height: calc(100vh - 64px)
   background: url('../images/header.jpeg') no-repeat center
   background-size: cover
   display: flex
   flex-direction: column
-
-  nav
-    display: flex
-    align-items: center
-    min-height: 64px
-    padding: 10px 15px
-    background: $nav-background
-
-    .logo
-      margin-right: auto
-      @include heading-text
-      font-size: 2.5em
-      color: $terary-color
-      font-weight: 700
-
-    .btn
-      color: $secondary-color
-
-    .signup
-      background: $link-color
-      margin-right: 10px
-
-    .login
-      background: $primary-color
-
-
-  form
-    margin: auto
+  div
     height: 37px
+    margin: auto
     label
       top: 7px
       left: 30px
@@ -51,7 +88,7 @@
         color: #785c57
       &::-webkit-search-cancel-button
         display: none
-
+        
     .btn
       align-self: center
       border-radius: 0

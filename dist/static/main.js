@@ -63,23 +63,25 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 6:
+/******/ ([
+/* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var navIcon = document.querySelector('.nav-icon');
+var mobileNav = document.querySelector('.mobile-nav-container');
+var nav = document.querySelector('nav');
 
 navIcon.addEventListener('click', function () {
   navIcon.classList.toggle('open');
+  mobileNav.classList.toggle('mobile-nav-open');
+  nav.classList.toggle('nav-mobile-is-open');
 });
 
 /***/ })
-
-/******/ });
+/******/ ]);

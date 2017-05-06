@@ -1,4 +1,15 @@
+.nav-mobile-is-open
+  background: #343335
+  .logo
+    color: $secondary-color
+  .nav-icon
+    span
+      background: $secondary-color  
+
 nav
+  position: fixed
+  z-index: 1000
+  width: 100%
   display: flex
   align-items: center
   min-height: 64px
@@ -20,6 +31,10 @@ nav
   .login
     background: $primary-color
 
+  @media screen and (max-width: 1200px)
+    .large-screen
+      display: none
+
 
 
 
@@ -31,15 +46,19 @@ nav
     height: 35px
     justify-content: space-around
     position: relative
+    @media screen and (min-width: 1200px)
+      display: none
+
+
     span
       position: absolute
       width: 100%
       height: 5px
-      background: #fff
+      background: $terary-color
       left: 0
       transform: rotate(0deg)
       transform-origin: left
-      transition: 0.3s ease-out
+      transition: 0.2s ease-out
       &:nth-child(1)
         top: 0
       &:nth-child(3)
@@ -62,7 +81,7 @@ nav
 
 
 .main-header
-  height: calc(100vh - 64px)
+  height: 100vh
   background: url('../images/header.jpeg') no-repeat center
   background-size: cover
   display: flex
@@ -88,7 +107,7 @@ nav
         color: #785c57
       &::-webkit-search-cancel-button
         display: none
-        
+
     .btn
       align-self: center
       border-radius: 0

@@ -278,6 +278,7 @@ nav {
     .secondary-content {
       flex-direction: column; } }
   .secondary-content .latest-recipes {
+    display: flex;
     background: url("/images/latest-recipes.jpg") no-repeat center;
     background-size: cover;
     position: relative;
@@ -289,7 +290,82 @@ nav {
       height: 100%;
       top: 0;
       left: 0;
-      background-color: rgba(231, 186, 156, 0.6); }
+      background-color: rgba(231, 186, 156, 0.6);
+      pointer-events: none; }
+
+.carousel {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden; }
+  .carousel .cells-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    position: relative;
+    left: 0;
+    transition: left 0.2s; }
+    .carousel .cells-container .cell {
+      flex: 0 0 100%;
+      display: flex;
+      justify-content: center; }
+      .carousel .cells-container .cell .new-recipe {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        width: 80%; }
+        .carousel .cells-container .cell .new-recipe img {
+          border: 7px solid #fff;
+          border-radius: 5px;
+          width: 80%; }
+        .carousel .cells-container .cell .new-recipe div {
+          width: calc(80% - 14px);
+          padding: 20px;
+          margin-top: 5px;
+          text-align: center;
+          background: rgba(0, 0, 0, 0.6);
+          position: absolute;
+          bottom: 7px; }
+          .carousel .cells-container .cell .new-recipe div h3 {
+            margin: 10px;
+            color: #b3b3b3; }
+          .carousel .cells-container .cell .new-recipe div .btn {
+            background: #da7d2d;
+            color: #fff; }
+
+.tabs {
+  display: flex;
+  margin: 10px 0; }
+  .tabs li {
+    margin: 10px;
+    width: 20px;
+    height: 20px;
+    background: #eed3bd;
+    border-radius: 50%;
+    cursor: pointer; }
+  .tabs li.selected {
+    background: #71524e; }
+
+.btn-container #display-next {
+  width: 50px;
+  height: 50px;
+  background: #71524e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5em;
+  color: beige;
+  transition: transform 0.2s;
+  cursor: pointer; }
+
+.btn-container .last {
+  transform: rotate(180deg); }
 
 aside {
   background: #eed3bd;

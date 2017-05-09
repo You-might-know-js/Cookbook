@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -73,14 +73,76 @@
 "use strict";
 
 
-var navIcon = document.querySelector('.nav-icon');
-var mobileNav = document.querySelector('.mobile-nav-container');
-var nav = document.querySelector('nav');
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-navIcon.addEventListener('click', function () {
-  navIcon.classList.toggle('open');
-  mobileNav.classList.toggle('mobile-nav-open');
-  nav.classList.toggle('nav-mobile-is-open');
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Nav = function () {
+  function Nav() {
+    _classCallCheck(this, Nav);
+
+    this.navIcon = document.querySelector('.nav-icon');
+    this.mobileNavContainer = document.querySelector('.mobile-nav-container');
+    this.classNavIsOpen = 'mobile-nav-open';
+    this.classUpdateNav = 'nav-mobile-is-open';
+    this.navMobileIsOpen = false;
+    this.toggleMenu = this.toggleMenu.bind(this);
+  }
+
+  _createClass(Nav, [{
+    key: 'updateNavIcon',
+    value: function updateNavIcon() {
+      this.navMobileIsOpen ? this.navIcon.classList.add('open') : this.navIcon.classList.remove('open');
+    }
+  }, {
+    key: 'updateNavColors',
+    value: function updateNavColors() {
+      this.navMobileIsOpen ? document.body.classList.add(this.classUpdateNav) : document.body.classList.remove(this.classUpdateNav);
+    }
+  }, {
+    key: 'updateMobileMenu',
+    value: function updateMobileMenu() {
+      this.navMobileIsOpen ? this.mobileNavContainer.classList.add(this.classNavIsOpen) : this.mobileNavContainer.classList.remove(this.classNavIsOpen);
+    }
+  }, {
+    key: 'addEvents',
+    value: function addEvents() {
+      this.navMobileIsOpen ? this.mobileNavContainer.addEventListener('click', this.toggleMenu) : this.mobileNavContainer.removeEventListener('click', this.toggleMenu);
+    }
+  }, {
+    key: 'toggleMenu',
+    value: function toggleMenu() {
+      this.mobileNavContainer.style.willChange = 'opacity';
+      this.navMobileIsOpen = !this.navMobileIsOpen;
+      this.updateNavIcon();
+      this.updateNavColors();
+      this.updateMobileMenu();
+      this.addEvents();
+    }
+  }]);
+
+  return Nav;
+}();
+
+module.exports = new Nav();
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _nav = __webpack_require__(0);
+
+var _nav2 = _interopRequireDefault(_nav);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var nav = document.querySelector('.nav-icon');
+
+nav.addEventListener('click', function () {
+  _nav2.default.toggleMenu();
 });
 
 /***/ })

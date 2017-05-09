@@ -1,10 +1,9 @@
-const navIcon = document.querySelector('.nav-icon');
-const mobileNav = document.querySelector('.mobile-nav-container');
-const nav = document.querySelector('nav');
+import Nav from './components/nav.js'
 
 
-navIcon.addEventListener('click', () => {
-  navIcon.classList.toggle('open');
-  mobileNav.classList.toggle('mobile-nav-open');
-  nav.classList.toggle('nav-mobile-is-open')
+var nav = document.querySelector('.nav-icon');
+
+
+nav.addEventListener('click', function(){
+  Nav.toggleMenu();
 })

@@ -11,6 +11,6 @@ carousel.tabs.addEventListener('click', (e) => {
   carousel.selectTab(e);
 })
 
-carousel.nextButton.addEventListener('click', () =>{
-  carousel.switchButton();
+carousel.nextButton.addEventListener('click', (e) =>{
+  carousel.switchButton(e);
 })

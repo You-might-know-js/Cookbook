@@ -9,7 +9,7 @@ class Carousel{
     this.currentCell = 'cell1';
     this.cellIndex = 0;
     this.selectTab = this.selectTab.bind(this);
-    this.play = this.play.bind(this);
+    this.play = setInterval(this.play.bind(this), 3000);
     this.switchButton = this.switchButton.bind(this);
   }
 
@@ -42,7 +42,6 @@ class Carousel{
       return;
     }
 
-//if the engine made to here it means that cellIndex = 3
     if (this.nextButton.classList.contains(this.revertButtonClass)){
       return;
 
@@ -53,21 +52,19 @@ class Carousel{
   }
 
   selectTab(e){
-    if (e.target.nodeName === 'LI' || e.target.nodeName == 'SPAN'){
-      const selectedTab = e.target.getAttribute('data-cell');
 
-      //stop auto animation here ...
+    if (e.target.nodeName === 'LI' || e.target.nodeName == 'SPAN'){
+
+      clearInterval(this.play);
+
+      const selectedTab = e.target.getAttribute('data-cell');
 
       if (this.currentCell == selectedTab) return;
 
       this.currentCell = selectedTab;
       this.cellIndex = this.carouselCells.indexOf(this.currentCell);
 
-
-      this.updateCarousel(this.calculateDistance());
-      this.updateTabs();
-      this.updateNextButton();
-
+      this.updateView();
     }
   }
 
@@ -76,24 +73,25 @@ class Carousel{
     this.cellIndex++;
 
     this.currentCell = this.carouselCells[this.cellIndex];
-    this.updateCarousel(this.calculateDistance());
-    this.updateNextButton();
-    this.updateTabs();
+
+    this.updateView();
   }
 
   previousCell(){
     this.cellIndex--;
 
     this.currentCell = this.carouselCells[this.cellIndex];
-    this.updateCarousel(this.calculateDistance());
-    this.updateNextButton();
-    this.updateTabs();
+
+    this.updateView();
   }
 
-  switchButton(){
-    this.cellIndex >= 0 && this.cellIndex <= 2?
-    this.nextCell():
-    this.previousCell();
+  switchButton(e){
+
+    clearInterval(this.play);
+
+    this.nextButton.classList.contains(this.revertButtonClass) ?
+    this.previousCell() :
+    this.nextCell()
   }
 
   play(){
@@ -101,14 +99,21 @@ class Carousel{
     if (this.cellIndex == this.carouselCells.length - 1) {
       this.cellIndex = 0;
     }else{
-      this.cellIndex++;
+      this.cellIndex++
     }
 
-    this.nextCell();
+    this.currentCell = this.carouselCells[this.cellIndex];
+
+    this.updateView();
   }
 
 
+  updateView(){
 
+    this.updateCarousel(this.calculateDistance());
+    this.updateNextButton();
+    this.updateTabs();
+  }
 
 
 

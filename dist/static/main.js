@@ -137,6 +137,10 @@ var _nav = __webpack_require__(0);
 
 var _nav2 = _interopRequireDefault(_nav);
 
+var _carousel = __webpack_require__(2);
+
+var _carousel2 = _interopRequireDefault(_carousel);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var nav = document.querySelector('.nav-icon');
@@ -144,6 +148,145 @@ var nav = document.querySelector('.nav-icon');
 nav.addEventListener('click', function () {
   _nav2.default.toggleMenu();
 });
+
+_carousel2.default.tabs.addEventListener('click', function (e) {
+  _carousel2.default.selectTab(e);
+});
+
+_carousel2.default.nextButton.addEventListener('click', function () {
+  _carousel2.default.switchButton();
+});
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Carousel = function () {
+  function Carousel() {
+    _classCallCheck(this, Carousel);
+
+    this.cellsContainer = document.querySelector('.cells-container');
+    this.tabs = document.querySelector('.tabs');
+    this.nextButton = document.getElementById('display-next');
+    this.TabSelectedclass = 'selected';
+    this.revertButtonClass = 'last';
+    this.carouselCells = ['cell1', 'cell2', 'cell3', 'cell4'];
+    this.currentCell = 'cell1';
+    this.cellIndex = 0;
+    this.selectTab = this.selectTab.bind(this);
+    this.play = this.play.bind(this);
+    this.switchButton = this.switchButton.bind(this);
+  }
+
+  _createClass(Carousel, [{
+    key: 'calculateDistance',
+    value: function calculateDistance() {
+      var D = this.cellIndex * -100;
+      var leftValue = D + '%';
+
+      return leftValue;
+    }
+  }, {
+    key: 'updateCarousel',
+    value: function updateCarousel(val) {
+      this.cellsContainer.style.left = val;
+    }
+  }, {
+    key: 'updateTabs',
+    value: function updateTabs() {
+      var previousSelectedTab = document.querySelector('.selected');
+      previousSelectedTab.classList.remove('selected');
+
+      var currentSelectedTab = document.querySelector('[data-cell=' + this.currentCell + ']');
+      currentSelectedTab.classList.add('selected');
+    }
+  }, {
+    key: 'updateNextButton',
+    value: function updateNextButton() {
+      if (this.cellIndex != 0 && this.cellIndex != 3) return;
+
+      if (this.cellIndex == 0) {
+        this.nextButton.classList.contains(this.revertButtonClass) ? this.nextButton.classList.remove(this.revertButtonClass) : null;
+
+        return;
+      }
+
+      //if the engine made to here it means that cellIndex = 3
+      if (this.nextButton.classList.contains(this.revertButtonClass)) {
+        return;
+      } else {
+        this.nextButton.classList.add(this.revertButtonClass);
+      }
+    }
+  }, {
+    key: 'selectTab',
+    value: function selectTab(e) {
+      if (e.target.nodeName === 'LI' || e.target.nodeName == 'SPAN') {
+        var selectedTab = e.target.getAttribute('data-cell');
+
+        //stop auto animation here ...
+
+        if (this.currentCell == selectedTab) return;
+
+        this.currentCell = selectedTab;
+        this.cellIndex = this.carouselCells.indexOf(this.currentCell);
+
+        this.updateCarousel(this.calculateDistance());
+        this.updateTabs();
+        this.updateNextButton();
+      }
+    }
+  }, {
+    key: 'nextCell',
+    value: function nextCell() {
+
+      this.cellIndex++;
+
+      this.currentCell = this.carouselCells[this.cellIndex];
+      this.updateCarousel(this.calculateDistance());
+      this.updateNextButton();
+      this.updateTabs();
+    }
+  }, {
+    key: 'previousCell',
+    value: function previousCell() {
+      this.cellIndex--;
+
+      this.currentCell = this.carouselCells[this.cellIndex];
+      this.updateCarousel(this.calculateDistance());
+      this.updateNextButton();
+      this.updateTabs();
+    }
+  }, {
+    key: 'switchButton',
+    value: function switchButton() {
+      this.cellIndex >= 0 && this.cellIndex <= 2 ? this.nextCell() : this.previousCell();
+    }
+  }, {
+    key: 'play',
+    value: function play() {
+
+      if (this.cellIndex == this.carouselCells.length - 1) {
+        this.cellIndex = 0;
+      } else {
+        this.cellIndex++;
+      }
+
+      this.nextCell();
+    }
+  }]);
+
+  return Carousel;
+}();
+
+module.exports = new Carousel();
 
 /***/ })
 /******/ ]);

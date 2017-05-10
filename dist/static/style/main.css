@@ -307,7 +307,7 @@ nav {
     align-items: center;
     position: relative;
     left: 0;
-    transition: left 0.2s; }
+    transition: left 0.3s; }
     .carousel .cells-container .cell {
       flex: 0 0 100%;
       display: flex;

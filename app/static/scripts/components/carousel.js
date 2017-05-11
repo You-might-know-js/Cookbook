@@ -14,25 +14,29 @@ class Carousel{
   }
 
   calculateDistance(){
+
     const D = this.cellIndex * -100;
     const leftValue = D + '%';
 
-    return leftValue
+    return leftValue;
   }
 
   updateCarousel(val){
+
     this.cellsContainer.style.left = val;
   }
 
   updateTabs(){
+
     const previousSelectedTab = document.querySelector('.selected');
     previousSelectedTab.classList.remove('selected');
 
-    const currentSelectedTab = document.querySelector(`[data-cell=${this.currentCell}]`)
+    const currentSelectedTab = document.querySelector(`[data-cell=${this.currentCell}]`);
     currentSelectedTab.classList.add('selected');
   }
 
   updateNextButton(){
+
     if (this.cellIndex != 0 && this.cellIndex != 3) return;
 
     if (this.cellIndex == 0){
@@ -71,15 +75,14 @@ class Carousel{
   nextCell(){
 
     this.cellIndex++;
-
     this.currentCell = this.carouselCells[this.cellIndex];
 
     this.updateView();
   }
 
   previousCell(){
-    this.cellIndex--;
 
+    this.cellIndex--;
     this.currentCell = this.carouselCells[this.cellIndex];
 
     this.updateView();
@@ -91,7 +94,7 @@ class Carousel{
 
     this.nextButton.classList.contains(this.revertButtonClass) ?
     this.previousCell() :
-    this.nextCell()
+    this.nextCell();
   }
 
   play(){
@@ -99,7 +102,7 @@ class Carousel{
     if (this.cellIndex == this.carouselCells.length - 1) {
       this.cellIndex = 0;
     }else{
-      this.cellIndex++
+      this.cellIndex++;
     }
 
     this.currentCell = this.carouselCells[this.cellIndex];

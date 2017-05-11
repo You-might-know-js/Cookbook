@@ -97,6 +97,7 @@ var Carousel = function () {
   _createClass(Carousel, [{
     key: 'calculateDistance',
     value: function calculateDistance() {
+
       var D = this.cellIndex * -100;
       var leftValue = D + '%';
 
@@ -105,11 +106,13 @@ var Carousel = function () {
   }, {
     key: 'updateCarousel',
     value: function updateCarousel(val) {
+
       this.cellsContainer.style.left = val;
     }
   }, {
     key: 'updateTabs',
     value: function updateTabs() {
+
       var previousSelectedTab = document.querySelector('.selected');
       previousSelectedTab.classList.remove('selected');
 
@@ -119,6 +122,7 @@ var Carousel = function () {
   }, {
     key: 'updateNextButton',
     value: function updateNextButton() {
+
       if (this.cellIndex != 0 && this.cellIndex != 3) return;
 
       if (this.cellIndex == 0) {
@@ -156,7 +160,6 @@ var Carousel = function () {
     value: function nextCell() {
 
       this.cellIndex++;
-
       this.currentCell = this.carouselCells[this.cellIndex];
 
       this.updateView();
@@ -164,8 +167,8 @@ var Carousel = function () {
   }, {
     key: 'previousCell',
     value: function previousCell() {
-      this.cellIndex--;
 
+      this.cellIndex--;
       this.currentCell = this.carouselCells[this.cellIndex];
 
       this.updateView();

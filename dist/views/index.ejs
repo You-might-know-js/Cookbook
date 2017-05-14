@@ -8,17 +8,22 @@
     <link rel="stylesheet" href="css/flickity.css">
     <link rel="stylesheet" href="style/main.css">
     <link rel="stylesheet" href="icons/css/font-awesome.min.css">
-
   </head>
   <body>
-    <% include partials/nav %>
+
+    <% if (user.loggedIn) { %>
+      <% include partials/nav-logged %>
+
+    <%} else {%>
+        <% include partials/nav %>
+    <%}%>
 
     <% include partials/mobilenav %>
 
     <header class="main-header">
-      <div name="searchForm">
+      <form class="serach-form" action="/newrecipe" method="get" name="searchForm">
         <input type="search" name="recipe-search" placeholder="search for recipes"><button type="submit" class="btn search" aria-label="search button">search</button>
-      </div>
+      </form>
     </header>
 
 

@@ -11,6 +11,15 @@ const app = express();
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, '../dist/views'))
 
+app.use((req,res, next) => {
+  req.user = {
+    username: 'wgee',
+    type: 'checf',
+    employed: false
+  }
+  next();
+})
+
 app.use(
       morgan((tokens, req, res) => {
         return [tokens.method(req, res),
@@ -25,10 +34,7 @@ app.use(express.static(path.join(__dirname, '../app/static/')))
 app.use(express.static(path.join(__dirname, '../node_modules/flickity/')))
 
 
-
-app.use(routes, (req, res) => {
-    res.render('index')
-})
+app.use('/', routes)
 
 
 app.listen(config.port , () => {

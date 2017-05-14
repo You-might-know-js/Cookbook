@@ -1,5 +1,5 @@
 .nav-mobile-is-open
-  overflow-y: hidden 
+  overflow-y: hidden
   nav
     background: #343335
     .logo
@@ -7,18 +7,40 @@
     .nav-icon
       span
         background: $secondary-color
+  .loggedIn
+    .serach-form
+      display: none
+
+.loggedIn
+  .user-actions
+    display: flex
+    align-items: center
+  .post-recipe
+    margin: 0 10px
+    background: #fff
+  .logout
+    background: #fff
+
+  @media screen and (max-width: 920px)
+    flex-wrap: wrap
+    .serach-form
+      order: 3
+      margin: auto
+      margin-top: 15px
+    .logo
+      flex-basis: 80%
 
 nav
   position: fixed
   z-index: 1000
   width: 100%
   display: flex
+  justify-content: space-between
   align-items: center
   min-height: 64px
-  padding: 10px 15px
+  padding: 0 15px
   background: $nav-background
   .logo
-    margin-right: auto
     @include heading-text
     font-size: 2.5em
     color: $terary-color
@@ -38,8 +60,6 @@ nav
       display: none
 
 
-
-
   .nav-icon
     cursor: pointer
     display: flex
@@ -47,6 +67,7 @@ nav
     width: 40px
     height: 35px
     justify-content: space-around
+    align-items: flex-end
     position: relative
     @media screen and (min-width: 1200px)
       display: none
@@ -54,10 +75,9 @@ nav
 
     span
       position: absolute
-      width: 100%
+      width: 40px
       height: 5px
       background: $terary-color
-      left: 0
       transform: rotate(0deg)
       transform-origin: left
       transition: 0.2s ease-out
@@ -81,40 +101,10 @@ nav
       transform: rotateZ(-45deg)
       left: 8px
 
-
 .main-header
   height: 100vh
   background: url('../images/header.jpeg') no-repeat center
   background-size: cover
   display: flex
-  flex-direction: column
-  div
-    height: 37px
-    margin: auto
-    label
-      top: 7px
-      left: 30px
-      font-weight: 300
-      font-size: 0.9em
-      height: 100%
-
-    input[type="search"]
-      padding: 5px
-      height: 100%
-      width: 300px
-      border: 0
-      background: #3e2b2c
-      border: 1px solid $terary-color
-      &::placeholder
-        color: #785c57
-      &::-webkit-search-cancel-button
-        display: none
-
-    .btn
-      align-self: center
-      border-radius: 0
-      margin-left: -5px
-      height: 100%
-      vertical-align: top
-      background-color: $terary-color
-      color: $nav-background
+  justify-content: center
+  align-items: center

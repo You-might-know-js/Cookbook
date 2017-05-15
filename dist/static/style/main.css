@@ -67,7 +67,8 @@ button {
 body {
   font-size: 16px;
   background: #E7BA9C;
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Roboto', sans-serif;
+  padding-top: 64px; }
 
 .btn {
   min-width: 60px;
@@ -497,7 +498,6 @@ aside {
             background: #533c39; }
 
 .form-wrapper {
-  padding-top: 64px;
   margin-top: 35px;
   display: flex;
   height: 600px; }

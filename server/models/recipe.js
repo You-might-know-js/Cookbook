@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 
-recipeSchema = new mongoose.Schema({
+const recipeSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true
@@ -35,6 +35,5 @@ recipeSchema = new mongoose.Schema({
     required: false
   }
 })
-
 
 module.exports = mongoose.model('Recipe', recipeSchema);

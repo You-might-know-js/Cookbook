@@ -1,6 +1,6 @@
-const express = require('express');
-
+import express from 'express'
 const router = express.Router();
+import controllers from './controllers/controllers'
 
 router.get('/', (req, res) => {
   res.render('index', {
@@ -18,9 +18,10 @@ router.get('/post', (req, res) => {
   });
 })
 
-router.post('/post', (req, res) => {
-  res.json(req.body)
+router.post('/post', (req, res, next) => {
+  controllers.postRecipe(req, res).catch(next);
 })
+
 
 
 module.exports = router

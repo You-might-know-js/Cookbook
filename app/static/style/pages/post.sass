@@ -1,0 +1,47 @@
+.form-wrapper
+  padding-top: 64px
+  margin-top: 35px
+  display: flex
+  height: 600px
+  form
+    width: 50%
+    margin: 0 auto
+    padding: 20px
+    background: #eed3bd
+    display: flex
+    flex-direction: column
+    align-items: center
+    box-shadow: 2px 1px 10px #000
+    div[role]
+      display: flex
+      width: 100%
+      margin: 7px
+      label
+        text-transform: uppercase
+        flex-basis: 110px
+        margin-right: 5px
+        display: flex
+        align-items: center
+        justify-content: center
+      input,
+      textarea
+        padding: 7px 5px
+        flex: 1
+        background: $terary-color
+        border: none
+      textarea
+        height: 75px
+        resize: none
+        input
+      select
+        background: $terary-color
+        color: $nav-background
+        flex: 1
+    .button-wrapper
+      display: flex
+      width: 100%
+      .publish
+        background: $nav-background
+        color: $terary-color
+        flex: 1
+        margin-left: 115px

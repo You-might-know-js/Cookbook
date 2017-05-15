@@ -123,4 +123,4 @@ class Carousel{
 }
 
 
-module.exports = new Carousel();
+module.exports =  Carousel;

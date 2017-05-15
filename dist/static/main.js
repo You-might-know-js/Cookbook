@@ -208,7 +208,7 @@ var Carousel = function () {
   return Carousel;
 }();
 
-module.exports = new Carousel();
+module.exports = Carousel;
 
 /***/ }),
 /* 1 */
@@ -293,13 +293,13 @@ nav.addEventListener('click', function () {
   _nav2.default.toggleMenu();
 });
 
-_carousel2.default.tabs.addEventListener('click', function (e) {
-  _carousel2.default.selectTab(e);
-});
-
-_carousel2.default.nextButton.addEventListener('click', function (e) {
-  _carousel2.default.switchButton(e);
-});
+// carousel.tabs.addEventListener('click', (e) => {
+//   carousel.selectTab(e);
+// })
+//
+// carousel.nextButton.addEventListener('click', (e) =>{
+//   carousel.switchButton(e);
+// })
 
 /***/ })
 /******/ ]);

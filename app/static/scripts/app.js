@@ -7,10 +7,10 @@ nav.addEventListener('click', function(){
   Nav.toggleMenu();
 })
 
-carousel.tabs.addEventListener('click', (e) => {
-  carousel.selectTab(e);
-})
-
-carousel.nextButton.addEventListener('click', (e) =>{
-  carousel.switchButton(e);
-})
+// carousel.tabs.addEventListener('click', (e) => {
+//   carousel.selectTab(e);
+// })
+//
+// carousel.nextButton.addEventListener('click', (e) =>{
+//   carousel.switchButton(e);
+// })

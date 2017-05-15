@@ -79,18 +79,18 @@ body {
   text-transform: uppercase;
   font-weight: 700; }
 
-.serach-form {
+.search-form {
   height: 37px;
   display: flex;
   justify-content: center;
   flex: 1; }
-  .serach-form label {
+  .search-form label {
     top: 7px;
     left: 30px;
     font-weight: 300;
     font-size: 0.9em;
     height: 100%; }
-  .serach-form input[type="search"] {
+  .search-form input[type="search"] {
     padding: 5px;
     height: 100%;
     border: 0;
@@ -98,11 +98,11 @@ body {
     border: 1px solid #E7BA9C;
     flex: 1;
     max-width: 300px; }
-    .serach-form input[type="search"]::placeholder {
+    .search-form input[type="search"]::placeholder {
       color: #785c57; }
-    .serach-form input[type="search"]::-webkit-search-cancel-button {
+    .search-form input[type="search"]::-webkit-search-cancel-button {
       display: none; }
-  .serach-form .btn {
+  .search-form .btn {
     align-self: center;
     border-radius: 0;
     margin-left: -5px;
@@ -128,7 +128,7 @@ body {
       color: #ECB951; }
     .nav-mobile-is-open nav .nav-icon span {
       background: #ECB951; }
-  .nav-mobile-is-open .loggedIn .serach-form {
+  .nav-mobile-is-open .loggedIn .search-form {
     display: none; }
 
 .loggedIn .user-actions {
@@ -145,7 +145,7 @@ body {
 @media screen and (max-width: 920px) {
   .loggedIn {
     flex-wrap: wrap; }
-    .loggedIn .serach-form {
+    .loggedIn .search-form {
       order: 3;
       margin: auto;
       margin-top: 15px; }
@@ -154,6 +154,7 @@ body {
 
 nav {
   position: fixed;
+  top: 0;
   z-index: 1000;
   width: 100%;
   display: flex;
@@ -494,3 +495,50 @@ aside {
           color: #eed3bd; }
           aside .trending-recipes .recipe-wrapper .recipe-info .views span {
             background: #533c39; }
+
+.form-wrapper {
+  padding-top: 64px;
+  margin-top: 35px;
+  display: flex;
+  height: 600px; }
+  .form-wrapper form {
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    background: #eed3bd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 1px 10px #000; }
+    .form-wrapper form div[role] {
+      display: flex;
+      width: 100%;
+      margin: 7px; }
+      .form-wrapper form div[role] label {
+        text-transform: uppercase;
+        flex-basis: 110px;
+        margin-right: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center; }
+      .form-wrapper form div[role] input,
+      .form-wrapper form div[role] textarea {
+        padding: 7px 5px;
+        flex: 1;
+        background: #E7BA9C;
+        border: none; }
+      .form-wrapper form div[role] textarea {
+        height: 75px;
+        resize: none; }
+      .form-wrapper form div[role] select {
+        background: #E7BA9C;
+        color: #71524e;
+        flex: 1; }
+    .form-wrapper form .button-wrapper {
+      display: flex;
+      width: 100%; }
+      .form-wrapper form .button-wrapper .publish {
+        background: #71524e;
+        color: #E7BA9C;
+        flex: 1;
+        margin-left: 115px; }

@@ -1,11 +1,13 @@
-import mongoose from 'mongoose';
-
+import mongoose from 'mongoose'
+import slugs from 'slugs'
 
 const recipeSchema = new mongoose.Schema({
+
   title: {
     type: String,
     required: true
   },
+  slug: String,
   image: {
     type: String,
     required: true
@@ -36,4 +38,14 @@ const recipeSchema = new mongoose.Schema({
   }
 })
 
-module.exports = mongoose.model('Recipe', recipeSchema);
+recipeSchema.pre('save', function(next){
+  if (!this.isModified('title')) next()
+
+  this.slug = slugs(this.title)
+
+  next()
+})
+
+mongoose.model('Recipe', recipeSchema)
+
+module.exports = mongoose.model('Recipe')

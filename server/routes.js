@@ -1,25 +1,18 @@
 import express from 'express'
-const router = express.Router();
 import controllers from './controllers/controllers'
+const router = express.Router()
 
-router.get('/', (req, res) => {
-  res.render('index', {
-    user: {
-      isLogged: true
-    }
-  });
-})
 
-router.get('/post', (req, res) => {
-  res.render('post', {
-    user: {
-      isLogged: true
-    }
-  });
-})
+router.get('/', controllers.root)
+
+router.get('/post', controllers.publish)
 
 router.post('/post', (req, res, next) => {
-  controllers.postRecipe(req, res).catch(next);
+  controllers.postRecipe(req, res).catch(next)
+})
+
+router.get('/success', (req, res) => {
+  res.render('success')
 })
 
 

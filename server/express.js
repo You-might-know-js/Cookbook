@@ -8,6 +8,8 @@ import routes from './routes'
 import mongoose from 'mongoose'
 import helpers from './helpers'
 import handlers from './handlers'
+import cookieParser from 'cookie-parser'
+import session from 'express-session'
 
 
 const app = express();
@@ -15,6 +17,9 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../dist/views'));
 
+app.use(session({secret: 'yay!'}))
+app.use(helpers.flashMessage);
+// app.use(cookieParser());
 app.use(
       morgan((tokens, req, res) => {
         return [tokens.method(req, res),
@@ -27,10 +32,17 @@ app.use(bodyParser());
 app.use(express.static(path.join(__dirname, '../dist/static/')))
 app.use(express.static(path.join(__dirname, '../app/static/')))
 
+app.use((req, res, next) => {
+  res.locals.user = {
+    isLogged: true
+  }
+
+  next()
+})
+
 app.use('/', routes)
 
 app.use(handlers.notFound)
-
 app.use(handlers.renderErrorPage)
 
 

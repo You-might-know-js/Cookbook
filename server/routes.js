@@ -5,16 +5,18 @@ const router = express.Router()
 
 router.get('/', controllers.root)
 
+router.get('/recipes', controllers.allRecipes)
+
 router.get('/post', controllers.publish)
 
-router.post('/post', (req, res, next) => {
-  controllers.postRecipe(req, res).catch(next)
-})
+router.get('/recipes/:recipe', controllers.recipe)
 
-router.get('/success', (req, res) => {
-  res.render('success')
+router.post('/post', (req, res) => {
+  controllers.postRecipe(req, res).catch((err) => {
+    req.addFlashMessage('error', 'Oops some went wrong! please try again and make sure to fill all fields')
+    res.redirect('/post')
+  })
 })
-
 
 
 module.exports = router

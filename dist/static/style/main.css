@@ -121,6 +121,10 @@ body {
     border-radius: 50%;
     margin-right: 7px; }
 
+.message {
+  padding: 20px 10px;
+  background: #fff; }
+
 .nav-mobile-is-open {
   overflow-y: hidden; }
   .nav-mobile-is-open nav {

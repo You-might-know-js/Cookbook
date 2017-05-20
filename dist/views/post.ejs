@@ -13,13 +13,17 @@
     <% if(user.isLogged) {%>
       <% include partials/nav-loggedin %>
       <%} else {%>
-    <% include partials/nav %>
+      <% include partials/nav %>
     <%}%>
 
     <% include partials/mobilenav %>
+
+    <% include partials/message%>
+
     <section class="form-wrapper">
-      <% include partials/post-recipe %>
+    <% include partials/post-recipe %>
     </section>
+
 
     <script type="text/javascript" src="main.js"></script>
   </body>

@@ -11,7 +11,6 @@ import handlers from './handlers'
 import cookieParser from 'cookie-parser'
 import session from 'express-session'
 
-
 const app = express();
 
 app.set('view engine', 'ejs');

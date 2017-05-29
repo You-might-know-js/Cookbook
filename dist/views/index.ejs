@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Cookbook - Recipes</title>
+    <meta name="description" content="Cookbook is a recipe sharing application">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="icons/css/font-awesome.min.css">
+  </head>
+  <body>
+    <% if(user.isLogged) {%>
+      <% include partials/nav-loggedin %>
+      <%} else {%>
+    <% include partials/nav %>
+    <%}%>
+
+    <% include partials/mobilenav %>
+
+    <header class="main-header">
+      <form action="/search" method="GET" class="search-form">
+        <input type="search" name="searchQuery" placeholder="search for recipes"><button type="submit" class="btn search" aria-label="search button">search</button>
+      </form>
+    </header>
+
+
+    <main>
+      <% include partials/categories %>
+      <% include partials/latestrecipes %>
+    </main>
+    
+    <script type="text/javascript" src="main.js"></script>
+  </body>
+</html>

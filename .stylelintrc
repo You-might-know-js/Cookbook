@@ -1,0 +1,15 @@
+{
+    "rules": {
+        "color-hex-case": "uppercase",
+        "font-family-name-quotes": "always-where-recommended",
+        "font-weight-notation": "numeric",
+        "function-calc-no-unspaced-operator": "true",
+        "function-comma-space-after": "true",
+        "function-max-empty-lines": 0,
+        "function-name-case": "lower",
+        "number-leading-zero": "always",
+        "string-quotes": "single",
+        "value-list-comma-space-after": "true",
+        "declaration-block-no-duplicate-properties": "true",
+    }
+}

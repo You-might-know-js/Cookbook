@@ -1,0 +1,90 @@
+aside
+  background: #eed3bd
+  margin-left: auto
+  // box-shadow: inset 0px 0px 1px #000
+  flex: 1
+  min-width: 350px
+  .trending-authors
+    margin-bottom: 30px
+    h3
+      @include heading-text
+      font-weight: 700
+      font-size: 1.2em
+      text-transform: uppercase
+      margin: 10px 0
+      padding: 10px
+      text-align: center
+      color: $primary-color
+
+    .author
+      display: flex
+      padding: 15px 15px
+      color: $text-color
+      border-bottom: 1px solid
+      &:hover
+        background: darken($heading-color, 5%)
+      img
+        width: 50px
+        height: 50px
+        border-radius: 50%
+        margin-right: 20px
+      figcaption
+        align-self: center
+        a
+          margin-bottom: 5px
+          color: darken($text-color, 15%)
+        p
+          font-weight: lighter
+
+  .trending-recipes
+    color: $text-color
+    h3
+      include heading-text
+      font-weight: 700
+      font-size: 1.2em
+      color: $primary-color
+      text-align: center
+      margin: 25px
+      text-transform: uppercase
+
+    .recipe-wrapper
+      display: flex
+      height: 140px
+      background: $nav-background
+      margin: 10px 0
+      .more
+        display: flex
+        flex-direction: column
+        margin-right: 10px
+        flex: 0 0 120px
+        img
+          flex: 0 0 100px
+          margin-bottom: auto
+        a
+          text-align: center
+          padding: 10px
+          background: #649950
+          color: $secondary-color
+      .recipe-info
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        p
+          display: flex
+          flex-direction: column
+          color: #eed3bd
+          .recipe-title
+            margin: 10px 0
+            color: #eed3bd
+
+          .author-name
+            color: $secondary-color
+            text-transform: uppercase
+            font-size: 0.8em
+            text-decoration: underline
+        .views
+          display: flex
+          justify-content: flex-end
+          color: #eed3bd
+          span
+            background: darken($nav-background, 10%)

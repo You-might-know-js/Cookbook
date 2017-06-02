@@ -73,14 +73,8 @@
 "use strict";
 
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Carousel = function () {
-  function Carousel() {
-    _classCallCheck(this, Carousel);
-
+class Carousel {
+  constructor() {
     this.cellsContainer = document.querySelector('.cells-container');
     this.tabs = document.querySelector('.tabs');
     this.nextButton = document.getElementById('display-next');
@@ -94,119 +88,106 @@ var Carousel = function () {
     this.switchButton = this.switchButton.bind(this);
   }
 
-  _createClass(Carousel, [{
-    key: 'calculateDistance',
-    value: function calculateDistance() {
+  calculateDistance() {
 
-      var D = this.cellIndex * -100;
-      var leftValue = D + '%';
+    const D = this.cellIndex * -100;
+    const leftValue = D + '%';
 
-      return leftValue;
+    return leftValue;
+  }
+
+  updateCarousel(val) {
+
+    this.cellsContainer.style.left = val;
+  }
+
+  updateTabs() {
+
+    const previousSelectedTab = document.querySelector('.selected');
+    previousSelectedTab.classList.remove('selected');
+
+    const currentSelectedTab = document.querySelector(`[data-cell=${this.currentCell}]`);
+    currentSelectedTab.classList.add('selected');
+  }
+
+  updateNextButton() {
+
+    if (this.cellIndex != 0 && this.cellIndex != 3) return;
+
+    if (this.cellIndex == 0) {
+      this.nextButton.classList.contains(this.revertButtonClass) ? this.nextButton.classList.remove(this.revertButtonClass) : null;
+
+      return;
     }
-  }, {
-    key: 'updateCarousel',
-    value: function updateCarousel(val) {
 
-      this.cellsContainer.style.left = val;
+    if (this.nextButton.classList.contains(this.revertButtonClass)) {
+      return;
+    } else {
+      this.nextButton.classList.add(this.revertButtonClass);
     }
-  }, {
-    key: 'updateTabs',
-    value: function updateTabs() {
+  }
 
-      var previousSelectedTab = document.querySelector('.selected');
-      previousSelectedTab.classList.remove('selected');
+  selectTab(e) {
 
-      var currentSelectedTab = document.querySelector('[data-cell=' + this.currentCell + ']');
-      currentSelectedTab.classList.add('selected');
-    }
-  }, {
-    key: 'updateNextButton',
-    value: function updateNextButton() {
-
-      if (this.cellIndex != 0 && this.cellIndex != 3) return;
-
-      if (this.cellIndex == 0) {
-        this.nextButton.classList.contains(this.revertButtonClass) ? this.nextButton.classList.remove(this.revertButtonClass) : null;
-
-        return;
-      }
-
-      if (this.nextButton.classList.contains(this.revertButtonClass)) {
-        return;
-      } else {
-        this.nextButton.classList.add(this.revertButtonClass);
-      }
-    }
-  }, {
-    key: 'selectTab',
-    value: function selectTab(e) {
-
-      if (e.target.nodeName === 'LI' || e.target.nodeName == 'SPAN') {
-
-        clearInterval(this.play);
-
-        var selectedTab = e.target.getAttribute('data-cell');
-
-        if (this.currentCell == selectedTab) return;
-
-        this.currentCell = selectedTab;
-        this.cellIndex = this.carouselCells.indexOf(this.currentCell);
-
-        this.updateView();
-      }
-    }
-  }, {
-    key: 'nextCell',
-    value: function nextCell() {
-
-      this.cellIndex++;
-      this.currentCell = this.carouselCells[this.cellIndex];
-
-      this.updateView();
-    }
-  }, {
-    key: 'previousCell',
-    value: function previousCell() {
-
-      this.cellIndex--;
-      this.currentCell = this.carouselCells[this.cellIndex];
-
-      this.updateView();
-    }
-  }, {
-    key: 'switchButton',
-    value: function switchButton(e) {
+    if (e.target.nodeName === 'LI' || e.target.nodeName == 'SPAN') {
 
       clearInterval(this.play);
 
-      this.nextButton.classList.contains(this.revertButtonClass) ? this.previousCell() : this.nextCell();
-    }
-  }, {
-    key: 'play',
-    value: function play() {
+      const selectedTab = e.target.getAttribute('data-cell');
 
-      if (this.cellIndex == this.carouselCells.length - 1) {
-        this.cellIndex = 0;
-      } else {
-        this.cellIndex++;
-      }
+      if (this.currentCell == selectedTab) return;
 
-      this.currentCell = this.carouselCells[this.cellIndex];
+      this.currentCell = selectedTab;
+      this.cellIndex = this.carouselCells.indexOf(this.currentCell);
 
       this.updateView();
     }
-  }, {
-    key: 'updateView',
-    value: function updateView() {
+  }
 
-      this.updateCarousel(this.calculateDistance());
-      this.updateNextButton();
-      this.updateTabs();
+  nextCell() {
+
+    this.cellIndex++;
+    this.currentCell = this.carouselCells[this.cellIndex];
+
+    this.updateView();
+  }
+
+  previousCell() {
+
+    this.cellIndex--;
+    this.currentCell = this.carouselCells[this.cellIndex];
+
+    this.updateView();
+  }
+
+  switchButton(e) {
+
+    clearInterval(this.play);
+
+    this.nextButton.classList.contains(this.revertButtonClass) ? this.previousCell() : this.nextCell();
+  }
+
+  play() {
+
+    if (this.cellIndex == this.carouselCells.length - 1) {
+      this.cellIndex = 0;
+    } else {
+      this.cellIndex++;
     }
-  }]);
 
-  return Carousel;
-}();
+    this.currentCell = this.carouselCells[this.cellIndex];
+
+    this.updateView();
+  }
+
+  updateView() {
+
+    this.updateCarousel(this.calculateDistance());
+    this.updateNextButton();
+    this.updateTabs();
+  }
+
+}
 
 module.exports = Carousel;
 
@@ -217,14 +198,9 @@ module.exports = Carousel;
 "use strict";
 
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+class Nav {
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Nav = function () {
-  function Nav() {
-    _classCallCheck(this, Nav);
-
+  constructor() {
     this.navIcon = document.querySelector('.nav-icon');
     this.mobileNavContainer = document.querySelector('.mobile-nav-container');
     this.classNavIsOpen = 'mobile-nav-open';
@@ -233,40 +209,30 @@ var Nav = function () {
     this.toggleMenu = this.toggleMenu.bind(this);
   }
 
-  _createClass(Nav, [{
-    key: 'updateNavIcon',
-    value: function updateNavIcon() {
-      this.navMobileIsOpen ? this.navIcon.classList.add('open') : this.navIcon.classList.remove('open');
-    }
-  }, {
-    key: 'updateNavColors',
-    value: function updateNavColors() {
-      this.navMobileIsOpen ? document.body.classList.add(this.classUpdateNav) : document.body.classList.remove(this.classUpdateNav);
-    }
-  }, {
-    key: 'updateMobileMenu',
-    value: function updateMobileMenu() {
-      this.navMobileIsOpen ? this.mobileNavContainer.classList.add(this.classNavIsOpen) : this.mobileNavContainer.classList.remove(this.classNavIsOpen);
-    }
-  }, {
-    key: 'addEvents',
-    value: function addEvents() {
-      this.navMobileIsOpen ? this.mobileNavContainer.addEventListener('click', this.toggleMenu) : this.mobileNavContainer.removeEventListener('click', this.toggleMenu);
-    }
-  }, {
-    key: 'toggleMenu',
-    value: function toggleMenu() {
-      this.mobileNavContainer.style.willChange = 'opacity';
-      this.navMobileIsOpen = !this.navMobileIsOpen;
-      this.updateNavIcon();
-      this.updateNavColors();
-      this.updateMobileMenu();
-      this.addEvents();
-    }
-  }]);
+  openNav() {
+    this.navIcon.classList.add('open');
+    this.mobileNavContainer.classList.add(this.classNavIsOpen);
+    document.body.classList.add(this.classUpdateNav);
+  }
 
-  return Nav;
-}();
+  closeNav() {
+    this.navIcon.classList.remove('open');
+    document.body.classList.remove(this.classUpdateNav);
+    this.mobileNavContainer.classList.remove(this.classNavIsOpen);
+  }
+
+  addEvents() {
+    this.navMobileIsOpen ? this.mobileNavContainer.addEventListener('click', this.toggleMenu) : this.mobileNavContainer.removeEventListener('click', this.toggleMenu);
+  }
+
+  toggleMenu() {
+    this.mobileNavContainer.style.willChange = 'opacity';
+    this.navMobileIsOpen = !this.navMobileIsOpen;
+    this.navMobileIsOpen ? this.openNav() : this.closeNav();
+    this.addEvents();
+  }
+
+}
 
 module.exports = new Nav();
 

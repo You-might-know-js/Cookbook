@@ -1,15 +1,17 @@
-import path from 'path'
-import express from 'express'
-import morgan from 'morgan'
-import bodyParser from 'body-parser'
-import compression from 'compression'
-import {config} from './config'
-import routes from './routes'
-import mongoose from 'mongoose'
-import helpers from './helpers'
-import handlers from './handlers'
-import cookieParser from 'cookie-parser'
-import session from 'express-session'
+const dotnav = require('dotenv').config()
+const path = require('path')
+const express = require('express')
+const morgan = require('morgan')
+const bodyParser = require('body-parser')
+const compression = require('compression')
+const routes = require('./routes')
+const mongoose = require('mongoose')
+const helpers = require('./helpers')
+const handlers = require('./handlers')
+const cookieParser = require('cookie-parser')
+const session = require('express-session')
+
+const {env} = process
 
 const app = express();
 
@@ -45,13 +47,14 @@ app.use(handlers.notFound)
 app.use(handlers.renderErrorPage)
 
 
-mongoose.connect(config.dataBase);
+mongoose.connect(env.DATABASE);
 mongoose.Promise = global.Promise;
 mongoose.connection.on('error', (err) => {
   console.log('there was an error ' + err);
 })
 
 
-app.listen(config.port , () => {
-  console.log(`yay! the server is up and running on ${config.host} ${config.port} and the env is currently ${config.env}`)
+
+app.listen(env.SERVER_PORT , () => {
+  console.log(`yay! the server is up and running on ${env.HOST} ${env.SERVER_PORT} and the env is currently ${env.NODE_ENV}`)
 })

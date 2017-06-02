@@ -1,5 +1,4 @@
-import mongoose from 'mongoose'
-import Recipe from '../models/recipe'
+const mongoose = require('mongoose')
 
 
 exports.root = (req, res) => {
@@ -8,24 +7,4 @@ exports.root = (req, res) => {
 
 exports.publish = (req, res) => {
     res.render('post')
-}
-
-
-exports.allRecipes = async (req, res) => {
-  const recipes = await Recipe.find()
-  res.json(recipes)
-}
-
-exports.recipe = async (req, res) => {
-  const slug =  req.params.recipe
-  const recipe = await Recipe.find({slug: slug})
-
-  res.send(recipe)
-}
-
-exports.postRecipe = async (req,res) => {
-  const recipe = new Recipe(req.body)
-    await recipe.save()
-    req.addFlashMessage('success', 'thanks!, the recipe has been published successfuly')
-    res.redirect(`/recipes/${recipe.slug}`)
 }

@@ -9,23 +9,22 @@ class Nav{
     this.toggleMenu = this.toggleMenu.bind(this);
   }
 
-  updateNavIcon(){
-    this.navMobileIsOpen?
-    this.navIcon.classList.add('open'):
+
+
+  openNav() {
+      this.navIcon.classList.add('open');
+      this.mobileNavContainer.classList.add(this.classNavIsOpen);
+      document.body.classList.add(this.classUpdateNav);
+  }
+
+
+
+  closeNav(){
     this.navIcon.classList.remove('open');
-  }
-
-  updateNavColors(){
-    this.navMobileIsOpen?
-    document.body.classList.add(this.classUpdateNav):
     document.body.classList.remove(this.classUpdateNav);
-  }
-
-  updateMobileMenu(){
-    this.navMobileIsOpen?
-    this.mobileNavContainer.classList.add(this.classNavIsOpen):
     this.mobileNavContainer.classList.remove(this.classNavIsOpen);
   }
+
 
   addEvents(){
     this.navMobileIsOpen?
@@ -36,9 +35,7 @@ class Nav{
   toggleMenu(){
     this.mobileNavContainer.style.willChange = 'opacity'
     this.navMobileIsOpen = !this.navMobileIsOpen
-    this.updateNavIcon();
-    this.updateNavColors();
-    this.updateMobileMenu();
+    this.navMobileIsOpen? this.openNav() : this.closeNav()
     this.addEvents();
   }
 

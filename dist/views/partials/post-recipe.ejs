@@ -1,0 +1,36 @@
+<form action="/post" method="post">
+  <h1>Post a New Recipe!</h1>
+
+  <div role="group">
+    <label for="title">Title:</label>
+    <input type="text" name="title" id="title">
+  </div>
+  <div role="group">
+    <label for="image">Image:</label>
+    <input type="text" name="image" id="image">
+  </div>
+  <div role="group">
+    <label for="author">author:</label>
+    <input type="text" name="author" id="author">
+  </div>
+  <div role="group">
+    <label for="description">description:</label>
+    <textarea name="description" id="description"></textarea>
+  </div>
+  <div role="group">
+    <label for="category">choose a category</label>
+    <select name="category" id="category">
+      <option value="Breakfast">Breakfast</option>
+      <option value="Dinner">Dinner</option>
+      <option value="Launch">Launch</option>
+      <option value="Desserts">Desserts</option>
+      <option value="Appetizers">Appetizers</option>
+      <option value="Drinks">Drinks</option>
+      <option value="Italian">Italian</option>
+      <option value="Mexican">Mexican</option>
+    </select>
+  </div>
+<div class="button-wrapper">
+  <button class="btn publish"  type="submit">Publish</button>
+</div>
+</form>
